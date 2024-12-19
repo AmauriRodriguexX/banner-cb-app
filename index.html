@@ -163,3 +163,31 @@
     </div>
 </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var downloadButton = document.querySelector('.banner__cta');
+        var userAgent = navigator.userAgent.toLowerCase();
+        var link;
+    
+        // Detecta Android
+        if (userAgent.indexOf('android') > -1) {
+            link = 'https://play.google.com/store/apps/details?id=com.compartamos.mobileApp&hl=es_MX&pli=1';
+        } 
+        // Detecta iOS (iPhone, iPad, iPod)
+        else if (userAgent.indexOf('iphone') > -1 || userAgent.indexOf('ipad') > -1 || userAgent.indexOf('ipod') > -1) {
+            link = 'https://apps.apple.com/mx/app/compartamos-móvil/id1139377771';
+        } 
+        // Detecta Huawei (AppGallery)
+        else if (userAgent.indexOf('huawei') > -1 || userAgent.indexOf('honor') > -1) {
+            link = 'https://appgallery.huawei.com/#/app/C102701635';
+        } else {
+            // Si no se detecta, se puede poner un enlace por defecto, por ejemplo, el de Play Store
+            link = 'https://play.google.com/store/apps/details?id=com.compartamos.mobileApp&hl=es_MX&pli=1';
+        }
+    
+        downloadButton.addEventListener('click', function() {
+            window.location.href = link;
+        });
+    });
+    </script>
